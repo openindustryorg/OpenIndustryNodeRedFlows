@@ -123,8 +123,8 @@
         "commandtype": "restart",
         "nodeId": "",
         "name": "warm restart with defaults",
-        "x": 330,
-        "y": 140,
+        "x": 290,
+        "y": 120,
         "wires": [
             [
                 "709f1fd9.02b96"
@@ -145,8 +145,8 @@
         "startDelay": "",
         "name": "",
         "addressSpaceItems": [],
-        "x": 140,
-        "y": 140,
+        "x": 100,
+        "y": 120,
         "wires": [
             [
                 "d81cdca2.c02e"
@@ -161,8 +161,8 @@
         "active": false,
         "console": "false",
         "complete": "false",
-        "x": 690,
-        "y": 140,
+        "x": 650,
+        "y": 120,
         "wires": []
     },
     {
@@ -194,8 +194,8 @@
         "maxNodesPerBrowse": "",
         "delayToClose": "",
         "addressSpaceScript": "function constructAlarmAddressSpace(server, addressSpace, eventObjects, done) {\n    // server = the created node-opcua server\n    // addressSpace = script placeholder\n    // eventObjects = to hold event variables in memory from this script\n    \n    // internal global sandbox objects are \n    // node = node of the flex server, \n    // coreServer = core iiot server object for debug and access to nodeOPCUA,\n    // and scriptObjects to hold variables and functions\n    const LocalizedText = coreServer.core.nodeOPCUA.LocalizedText\n    const namespace = addressSpace.getOwnNamespace()\n\n    coreServer.internalDebugLog('init dynamic address space')\n    node.warn('construct new address space for OPC UA')\n  \n    \n    // variable with value\n    if(scriptObjects.testReadWrite === undefined || scriptObjects.testReadWrite === null) {\n            scriptObjects.testReadWrite = 1000.0\n    }\n    if(scriptObjects.input1 === undefined || scriptObjects.input1 === null) {\n            scriptObjects.input1 = -1\n    }\n    if(scriptObjects.input2 === undefined || scriptObjects.input2 === null) {\n            scriptObjects.input2 = -1\n    }\n    \n    let myVariables = namespace.addObject({\n        browseName: 'MyVariables',\n        description: 'The Object representing some variables',\n        organizedBy: addressSpace.rootFolder.objects,\n        notifierOf: addressSpace.rootFolder.objects.server\n    })\n    \n    if(coreServer.core) {\n        namespace.addVariable({\n            componentOf: myVariables,\n            nodeId: 'ns=1;s=TestReadWrite',\n            browseName: 'TestReadWrite',\n            displayName: [\n                new LocalizedText({text: 'Test Read and Write', locale: 'en-US'}),\n                new LocalizedText({text: 'Test Lesen Schreiben', locale: 'de-DE'})\n            ],\n            dataType: 'Double',\n            value: {\n                get: function () {\n                    return new coreServer.core.nodeOPCUA.Variant({\n                        dataType: 'Double',\n                        value: scriptObjects.testReadWrite\n                    })\n                },\n                set: function (variant) {\n                    scriptObjects.testReadWrite = parseFloat(variant.value)\n                    return coreServer.core.nodeOPCUA.StatusCodes.Good\n                }\n            }\n            \n        })\n        \n        namespace.addVariable({\n            componentOf: myVariables,\n            nodeId: 'ns=1;s=Input1',\n            browseName: 'Input1',\n            displayName: [\n                new LocalizedText({text: 'Input1', locale: 'en-US'}),\n                new LocalizedText({text: 'Schreiben1', locale: 'de-DE'})\n            ],\n            dataType: 'Double',\n            value: {\n                get: function () {\n                    return new coreServer.core.nodeOPCUA.Variant({\n                        dataType: 'Double',\n                        value: scriptObjects.input1\n                    })\n                },\n                set: function (variant) {\n                    scriptObjects.input1 = parseFloat(variant.value)\n                    return coreServer.core.nodeOPCUA.StatusCodes.Good\n                }\n            }\n            \n        })\n        \n        namespace.addVariable({\n            componentOf: myVariables,\n            nodeId: 'ns=1;s=Input2',\n            browseName: 'Input2',\n            displayName: [\n                new LocalizedText({text: 'Input2', locale: 'en-US'}),\n                new LocalizedText({text: 'Schreiben2', locale: 'de-DE'})\n            ],\n            dataType: 'Double',\n            value: {\n                get: function () {\n                    return new coreServer.core.nodeOPCUA.Variant({\n                        dataType: 'Double',\n                        value: scriptObjects.input2\n                    })\n                },\n                set: function (variant) {\n                    scriptObjects.input2 = parseFloat(variant.value)\n                    return coreServer.core.nodeOPCUA.StatusCodes.Good\n                }\n            }\n            \n        })\n      \n    } else {\n        coreServer.internalDebugLog('coreServer.core needed for coreServer.core.nodeOPCUA')\n    }\n    \n    done()\n}",
-        "x": 530,
-        "y": 140,
+        "x": 490,
+        "y": 120,
         "wires": [
             [
                 "98b13289.dbed6"
@@ -208,8 +208,8 @@
         "z": "5a43811a.1197c",
         "name": "",
         "scope": null,
-        "x": 280,
-        "y": 80,
+        "x": 240,
+        "y": 60,
         "wires": [
             [
                 "21ab585c.1671f8"
@@ -226,8 +226,8 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 690,
-        "y": 80,
+        "x": 650,
+        "y": 60,
         "wires": []
     },
     {
@@ -326,7 +326,7 @@
         "links": [
             "9c42945.2e2fd68"
         ],
-        "x": 575,
+        "x": 595,
         "y": 100,
         "wires": []
     },
@@ -342,8 +342,8 @@
         "activateFilters": false,
         "negateFilter": false,
         "filters": [],
-        "x": 530,
-        "y": 200,
+        "x": 490,
+        "y": 180,
         "wires": [
             [
                 "a92d132.d73def"
@@ -359,8 +359,8 @@
         "justValue": false,
         "showStatusActivities": false,
         "showErrors": true,
-        "x": 390,
-        "y": 200,
+        "x": 350,
+        "y": 180,
         "wires": [
             [
                 "33f1b4de.b1288c"
@@ -378,8 +378,8 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 690,
-        "y": 200,
+        "x": 650,
+        "y": 180,
         "wires": []
     },
     {
@@ -391,8 +391,8 @@
             "c7f31351.229cd",
             "b199ada4.cc27d"
         ],
-        "x": 235,
-        "y": 260,
+        "x": 195,
+        "y": 240,
         "wires": [
             [
                 "4abdd5b7.82e3bc"
@@ -410,8 +410,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 450,
-        "y": 80,
+        "x": 630,
+        "y": 180,
         "wires": []
     },
     {
@@ -425,8 +425,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 270,
-        "y": 80,
+        "x": 230,
+        "y": 60,
         "wires": []
     },
     {
@@ -437,8 +437,8 @@
         "func": "let uint8 = new Uint8Array([2])\nmsg.valuesToWrite = [uint8[0], 20.33];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 280,
-        "y": 180,
+        "x": 240,
+        "y": 160,
         "wires": [
             [
                 "18b053d7.9057fc",
@@ -462,17 +462,12 @@
         "addressSpaceItems": [
             {
                 "name": "",
-                "nodeId": "ns=1;s=OilTankNumber",
-                "datatypeName": "Byte"
-            },
-            {
-                "name": "",
                 "nodeId": "ns=1;s=TestReadWrite",
                 "datatypeName": "Double"
             }
         ],
-        "x": 130,
-        "y": 180,
+        "x": 90,
+        "y": 160,
         "wires": [
             [
                 "64133df3.02a3e4",
@@ -496,17 +491,12 @@
         "addressSpaceItems": [
             {
                 "name": "",
-                "nodeId": "ns=1;s=OilTankNumber",
-                "datatypeName": "Byte"
-            },
-            {
-                "name": "",
                 "nodeId": "ns=1;s=TestReadWrite",
                 "datatypeName": "Double"
             }
         ],
-        "x": 130,
-        "y": 340,
+        "x": 90,
+        "y": 320,
         "wires": [
             [
                 "47d841e6.736e3"
@@ -527,8 +517,8 @@
         "showErrors": false,
         "parseStrings": false,
         "historyDays": 1,
-        "x": 250,
-        "y": 340,
+        "x": 210,
+        "y": 320,
         "wires": [
             [
                 "bb550e77.7c737"
@@ -546,8 +536,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 590,
-        "y": 260,
+        "x": 630,
+        "y": 320,
         "wires": []
     },
     {
@@ -562,8 +552,8 @@
         "activateFilters": false,
         "negateFilter": false,
         "filters": [],
-        "x": 470,
-        "y": 340,
+        "x": 430,
+        "y": 320,
         "wires": [
             [
                 "c716eb83.719518"
@@ -578,8 +568,8 @@
         "links": [
             "a39bc930.4b2738"
         ],
-        "x": 415,
-        "y": 180,
+        "x": 595,
+        "y": 120,
         "wires": []
     },
     {
@@ -590,8 +580,8 @@
         "links": [
             "97949f22.37a2"
         ],
-        "x": 235,
-        "y": 200,
+        "x": 195,
+        "y": 180,
         "wires": [
             [
                 "4abdd5b7.82e3bc"
@@ -694,7 +684,7 @@
         "links": [
             "9c42945.2e2fd68"
         ],
-        "x": 575,
+        "x": 595,
         "y": 100,
         "wires": []
     }
