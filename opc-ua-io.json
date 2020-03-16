@@ -825,7 +825,7 @@
         "proxy": "",
         "authType": "bearer",
         "x": 250,
-        "y": 100,
+        "y": 120,
         "wires": [
             [
                 "c75e284d.4f9e58"
@@ -844,7 +844,7 @@
         "complete": "true",
         "targetType": "full",
         "x": 630,
-        "y": 100,
+        "y": 120,
         "wires": []
     },
     {
@@ -860,11 +860,41 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 70,
-        "y": 100,
+        "y": 120,
         "wires": [
             [
                 "4bf6c1f9.d9d4a"
             ]
         ]
+    },
+    {
+        "id": "6de9c502.5c725c",
+        "type": "catch",
+        "z": "bad782b5.f68ac",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 240,
+        "y": 60,
+        "wires": [
+            [
+                "32ffe0d5.c54b6"
+            ]
+        ]
+    },
+    {
+        "id": "32ffe0d5.c54b6",
+        "type": "debug",
+        "z": "bad782b5.f68ac",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 630,
+        "y": 60,
+        "wires": []
     }
 ]
