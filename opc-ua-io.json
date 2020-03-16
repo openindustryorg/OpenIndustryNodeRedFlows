@@ -232,7 +232,6 @@
         "type": "OPCUA-IIoT-Inject",
         "z": "5a43811a.1197c",
         "injectType": "inject",
-        "payload": "",
         "payloadType": "date",
         "topic": "",
         "repeat": "",
@@ -240,6 +239,7 @@
         "once": false,
         "startDelay": "",
         "name": "",
+        "payload": "",
         "addressSpaceItems": [],
         "x": 100,
         "y": 120,
@@ -355,7 +355,7 @@
         "topic": "",
         "showErrors": false,
         "x": 430,
-        "y": 60,
+        "y": 80,
         "wires": [
             [
                 "c7f31351.229cd"
@@ -388,10 +388,12 @@
         "y": 100,
         "wires": [
             [
-                "a6d43959.646948"
+                "a6d43959.646948",
+                "4f7456d6.f7afb8"
             ],
             [
-                "790131eb.a2f13"
+                "790131eb.a2f13",
+                "6d8e871e.6c49b8"
             ]
         ]
     },
@@ -407,7 +409,7 @@
         "topic": "",
         "showErrors": false,
         "x": 430,
-        "y": 140,
+        "y": 120,
         "wires": [
             [
                 "c7f31351.229cd"
@@ -547,7 +549,6 @@
         "type": "OPCUA-IIoT-Inject",
         "z": "151ef0c9.7db7ef",
         "injectType": "write",
-        "payload": "",
         "payloadType": "date",
         "topic": "",
         "repeat": "",
@@ -555,6 +556,7 @@
         "once": true,
         "startDelay": "",
         "name": "inject",
+        "payload": "",
         "addressSpaceItems": [
             {
                 "name": "",
@@ -562,7 +564,7 @@
                 "datatypeName": "Double"
             }
         ],
-        "x": 90,
+        "x": 110,
         "y": 160,
         "wires": [
             [
@@ -576,7 +578,6 @@
         "type": "OPCUA-IIoT-Inject",
         "z": "151ef0c9.7db7ef",
         "injectType": "write",
-        "payload": "",
         "payloadType": "date",
         "topic": "",
         "repeat": "",
@@ -584,6 +585,7 @@
         "once": false,
         "startDelay": "",
         "name": "inject",
+        "payload": "",
         "addressSpaceItems": [
             {
                 "name": "",
@@ -591,8 +593,8 @@
                 "datatypeName": "Double"
             }
         ],
-        "x": 90,
-        "y": 320,
+        "x": 110,
+        "y": 260,
         "wires": [
             [
                 "43ea66be.6888d8"
@@ -809,7 +811,7 @@
             "24ffbeb8.18a9d2"
         ],
         "x": 595,
-        "y": 320,
+        "y": 260,
         "wires": []
     },
     {
@@ -859,7 +861,7 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "x": 70,
+        "x": 110,
         "y": 120,
         "wires": [
             [
@@ -896,5 +898,74 @@
         "x": 630,
         "y": 60,
         "wires": []
+    },
+    {
+        "id": "16a5ee93.2beb81",
+        "type": "debug",
+        "z": "60ed0d4f.42ca64",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 630,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "4f7456d6.f7afb8",
+        "type": "change",
+        "z": "60ed0d4f.42ca64",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"status\":\"Running\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 220,
+        "wires": [
+            [
+                "16a5ee93.2beb81"
+            ]
+        ]
+    },
+    {
+        "id": "6d8e871e.6c49b8",
+        "type": "change",
+        "z": "60ed0d4f.42ca64",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"status\":\"Idle\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 260,
+        "wires": [
+            [
+                "16a5ee93.2beb81"
+            ]
+        ]
     }
 ]
