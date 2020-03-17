@@ -1,5 +1,12 @@
 [
     {
+        "id": "c482a484.b1deb8",
+        "type": "tab",
+        "label": "Configuration",
+        "disabled": false,
+        "info": "# Device Details"
+    },
+    {
         "id": "60ed0d4f.42ca64",
         "type": "tab",
         "label": "Input1",
@@ -9,7 +16,7 @@
     {
         "id": "3b1c1034.36968",
         "type": "tab",
-        "label": "Input 2",
+        "label": "Input 2 ",
         "disabled": false,
         "info": ""
     },
@@ -335,8 +342,8 @@
         "interrupt": "b",
         "initial": true,
         "interval": "10",
-        "x": 110,
-        "y": 100,
+        "x": 90,
+        "y": 140,
         "wires": [
             [
                 "2a58b7cd.363618"
@@ -385,7 +392,7 @@
         "repair": false,
         "outputs": 2,
         "x": 270,
-        "y": 100,
+        "y": 140,
         "wires": [
             [
                 "a6d43959.646948",
@@ -638,8 +645,8 @@
         "interrupt": "b",
         "initial": true,
         "interval": "10",
-        "x": 110,
-        "y": 100,
+        "x": 90,
+        "y": 140,
         "wires": [
             [
                 "43844dda.24af44"
@@ -658,7 +665,7 @@
         "topic": "",
         "showErrors": false,
         "x": 430,
-        "y": 60,
+        "y": 80,
         "wires": [
             [
                 "b199ada4.cc27d"
@@ -688,13 +695,15 @@
         "repair": false,
         "outputs": 2,
         "x": 270,
-        "y": 100,
+        "y": 140,
         "wires": [
             [
-                "d17a3328.86e84"
+                "d17a3328.86e84",
+                "1e9c9605.1c913a"
             ],
             [
-                "20233166.99eabe"
+                "20233166.99eabe",
+                "c61582e.bf1ba8"
             ]
         ]
     },
@@ -710,7 +719,7 @@
         "topic": "",
         "showErrors": false,
         "x": 430,
-        "y": 140,
+        "y": 120,
         "wires": [
             [
                 "b199ada4.cc27d"
@@ -822,11 +831,11 @@
         "method": "POST",
         "ret": "txt",
         "paytoqs": false,
-        "url": "https://sta.openindustry.org/api/services/app/DeviceEvent/Create",
+        "url": "",
         "tls": "",
         "proxy": "",
         "authType": "bearer",
-        "x": 250,
+        "x": 650,
         "y": 120,
         "wires": [
             [
@@ -846,28 +855,8 @@
         "complete": "true",
         "targetType": "full",
         "x": 630,
-        "y": 120,
+        "y": 180,
         "wires": []
-    },
-    {
-        "id": "df6ae8ce.ff2d48",
-        "type": "inject",
-        "z": "bad782b5.f68ac",
-        "name": "",
-        "topic": "",
-        "payload": "{\"deviceId\":1,\"statusName\":\"Unknown\",\"entity1\":0,\"entity2\":1,\"entity3\":2,\"entity4\":3,\"entity5\":4}",
-        "payloadType": "json",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "x": 110,
-        "y": 120,
-        "wires": [
-            [
-                "4bf6c1f9.d9d4a"
-            ]
-        ]
     },
     {
         "id": "6de9c502.5c725c",
@@ -900,21 +889,6 @@
         "wires": []
     },
     {
-        "id": "16a5ee93.2beb81",
-        "type": "debug",
-        "z": "60ed0d4f.42ca64",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 630,
-        "y": 240,
-        "wires": []
-    },
-    {
         "id": "4f7456d6.f7afb8",
         "type": "change",
         "z": "60ed0d4f.42ca64",
@@ -924,7 +898,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"status\":\"Running\"}",
+                "to": "{\"statusName\":\"Running\"}",
                 "tot": "json"
             }
         ],
@@ -934,10 +908,10 @@
         "to": "",
         "reg": false,
         "x": 460,
-        "y": 220,
+        "y": 180,
         "wires": [
             [
-                "16a5ee93.2beb81"
+                "d85c8cee.d524b"
             ]
         ]
     },
@@ -951,7 +925,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"status\":\"Idle\"}",
+                "to": "{\"statusName\":\"Idle\"}",
                 "tot": "json"
             }
         ],
@@ -961,11 +935,219 @@
         "to": "",
         "reg": false,
         "x": 460,
-        "y": 260,
+        "y": 220,
         "wires": [
             [
-                "16a5ee93.2beb81"
+                "d85c8cee.d524b"
             ]
         ]
+    },
+    {
+        "id": "566800ae.67cad",
+        "type": "config",
+        "z": "c482a484.b1deb8",
+        "name": "Open Industry Device Id",
+        "properties": [
+            {
+                "p": "OpenIndustryDeviceId",
+                "pt": "global",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "active": true,
+        "x": 150,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a25aea0c.9b0a98",
+        "type": "config",
+        "z": "c482a484.b1deb8",
+        "name": "Open Industry URL",
+        "properties": [
+            {
+                "p": "OpenIndustryURL",
+                "pt": "global",
+                "to": "https://sta.openindustry.org",
+                "tot": "str"
+            }
+        ],
+        "active": true,
+        "x": 130,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "15ec62d1.9a957d",
+        "type": "join",
+        "z": "bad782b5.f68ac",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 450,
+        "y": 120,
+        "wires": [
+            [
+                "4bf6c1f9.d9d4a",
+                "30bb9fe0.982d5"
+            ]
+        ]
+    },
+    {
+        "id": "79fd820d.25ff5c",
+        "type": "function",
+        "z": "bad782b5.f68ac",
+        "name": "Open Industry Url",
+        "func": "msg.url = global.get(\"OpenIndustryURL\") + '/api/services/app/DeviceEvent/Create'\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 210,
+        "y": 160,
+        "wires": [
+            [
+                "15ec62d1.9a957d"
+            ]
+        ]
+    },
+    {
+        "id": "d0e4100d.cbfa3",
+        "type": "function",
+        "z": "bad782b5.f68ac",
+        "name": "Open Industry Device Id",
+        "func": "msg.payload = {\"deviceId\": global.get(\"OpenIndustryDeviceId\") } \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 190,
+        "y": 120,
+        "wires": [
+            [
+                "15ec62d1.9a957d"
+            ]
+        ]
+    },
+    {
+        "id": "30bb9fe0.982d5",
+        "type": "debug",
+        "z": "bad782b5.f68ac",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 470,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "d85c8cee.d524b",
+        "type": "link out",
+        "z": "60ed0d4f.42ca64",
+        "name": "",
+        "links": [
+            "835dcfd1.a5062"
+        ],
+        "x": 595,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "835dcfd1.a5062",
+        "type": "link in",
+        "z": "bad782b5.f68ac",
+        "name": "",
+        "links": [
+            "d85c8cee.d524b",
+            "8ca6913d.2a064"
+        ],
+        "x": 35,
+        "y": 140,
+        "wires": [
+            [
+                "d0e4100d.cbfa3",
+                "79fd820d.25ff5c"
+            ]
+        ]
+    },
+    {
+        "id": "1e9c9605.1c913a",
+        "type": "change",
+        "z": "3b1c1034.36968",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"entity1\":\"ACTIVE\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 180,
+        "wires": [
+            [
+                "8ca6913d.2a064"
+            ]
+        ]
+    },
+    {
+        "id": "c61582e.bf1ba8",
+        "type": "change",
+        "z": "3b1c1034.36968",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"entity1\":\"IDLE\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 220,
+        "wires": [
+            [
+                "8ca6913d.2a064"
+            ]
+        ]
+    },
+    {
+        "id": "8ca6913d.2a064",
+        "type": "link out",
+        "z": "3b1c1034.36968",
+        "name": "",
+        "links": [
+            "835dcfd1.a5062"
+        ],
+        "x": 595,
+        "y": 200,
+        "wires": []
     }
 ]
